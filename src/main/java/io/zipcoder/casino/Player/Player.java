@@ -47,16 +47,16 @@ public abstract class Player {
 
 
 
-    public Integer win(Integer amount){
-        Integer amountWon =0;
+    public Integer win(){
 
-        return amountWon;
+
+        return null;
     }
 
-    public Integer lose(Integer amount){
-        Integer amountLost = 0;
+    public Integer lose(){
 
-        return amountLost;
+
+        return null;
     }
 
 

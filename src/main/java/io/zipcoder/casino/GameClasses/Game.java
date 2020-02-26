@@ -1,5 +1,6 @@
 package io.zipcoder.casino.GameClasses;
 
+import io.zipcoder.casino.CasinoClasses.Membership;
 import io.zipcoder.casino.Player.Player;
 
 public interface Game {
@@ -12,7 +13,7 @@ public interface Game {
 
     public Boolean playAgain();
 
-    public Player playerBuilder();
+    public Player playerBuilder(Membership currentPlayer);
 
     public Boolean isTurn();
 }

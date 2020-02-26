@@ -3,6 +3,7 @@ package io.zipcoder.casino.GameClasses.DiceGames;
 
 import io.zipcoder.casino.CasinoClasses.ConsoleInput;
 import io.zipcoder.casino.CasinoClasses.ConsoleOutput;
+import io.zipcoder.casino.CasinoClasses.Membership;
 import io.zipcoder.casino.GameClasses.Game;
 import io.zipcoder.casino.Player.Player;
 
@@ -28,7 +29,7 @@ public class OU7  implements Game, ConsoleInput, ConsoleOutput {
         return null;
     }
 
-    public Player playerBuilder() {
+    public Player playerBuilder(Membership currentPlayer) {
 
         return null;
     }

@@ -25,7 +25,7 @@ public class Deck {
 
     public Card draw(){return currentDeck.pop();}
 
-    public Hand Show(){return null;}
+    public Card Show(){return currentDeck.peek();}
 
     public Stack<Card> getCurrentDeck() {
         return currentDeck;

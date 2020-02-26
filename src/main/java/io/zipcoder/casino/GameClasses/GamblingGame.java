@@ -1,14 +1,17 @@
 package io.zipcoder.casino.GameClasses;
 
+import io.zipcoder.casino.Player.Player;
+
 public interface GamblingGame {
     Integer betsOnTable = null;
 
-    public Integer placeWager();
+    public Integer placeWager(Integer moneyToWager);
 
-    public Integer addWinnings();
+    public Integer addWinnings(Integer moneyWon);
 
-    public Integer subtractLoses();
+    public Integer subtractLoses(Integer moneyLost);
 
-    public Boolean checkPlayerBalances();
+    public Boolean checkPlayerBalances(Player player
+    );
 
 }

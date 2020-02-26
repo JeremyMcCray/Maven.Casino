@@ -6,8 +6,8 @@ import io.zipcoder.casino.GameClasses.CardGames.Deck;
 public class Dealer extends Player{
 
     public Dealer(){
-        this.playerName = "Dealer";
-        this.balance = 0;
+        setPlayerName("Dealer");
+        setBalance(0);
         }
 
     public Card dealCard(Deck theDeck){

@@ -17,7 +17,7 @@ Deck deckOfCards = new Deck();
 
 
         //When
-        handOfCards.addCardToHand(deckOfCards.Draw());
+        handOfCards.addCardToHand(deckOfCards.draw());
         //Then
         Integer actual = 1;
 
@@ -30,7 +30,7 @@ Deck deckOfCards = new Deck();
 
 
         //When
-        Card cardToRemove = handOfCards.addCardToHand(deckOfCards.Draw());
+        Card cardToRemove = handOfCards.addCardToHand(deckOfCards.draw());
         handOfCards.removeCardFromHand(cardToRemove);
 
         Integer actual = 0;
@@ -41,7 +41,7 @@ Deck deckOfCards = new Deck();
 
     @Test
     public void checkIfCardIsInHand() {
-    Card card = deckOfCards.Draw();
+    Card card = deckOfCards.draw();
     handOfCards.addCardToHand(card);
     Boolean actual = handOfCards.checkIfCardIsInHand(card);
     Boolean expected = true;
@@ -51,7 +51,7 @@ Deck deckOfCards = new Deck();
 
     @Test
     public void checkIfCardIsNotInHand() {
-        Card card = deckOfCards.Draw();
+        Card card = deckOfCards.draw();
 
         Boolean actual = handOfCards.checkIfCardIsInHand(card);
         Boolean expected = false;

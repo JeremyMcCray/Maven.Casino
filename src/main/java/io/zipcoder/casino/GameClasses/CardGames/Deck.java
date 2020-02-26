@@ -7,7 +7,7 @@ import java.util.Collections;
 import java.util.Stack;
 
 public class Deck {
-    Stack<Card> currentDeck = new Stack<Card>();
+    private Stack<Card> currentDeck = new Stack<Card>();
 
     public Deck(){
         for (int i = 0;i<13;i++) {
@@ -18,17 +18,18 @@ public class Deck {
             }
         }
     }
-    public Deck shuffle(Deck shuffleMe){
-        Collections.shuffle(shuffleMe.currentDeck);
-        return shuffleMe;
-
+    public Deck shuffle(){
+        Collections.shuffle(this.currentDeck);
+        return this;
     }
 
-    public Card Draw(){return currentDeck.pop();}
+    public Card draw(){return currentDeck.pop();}
 
     public Hand Show(){return null;}
 
-
+    public Stack<Card> getCurrentDeck() {
+        return currentDeck;
+    }
 
 
 }

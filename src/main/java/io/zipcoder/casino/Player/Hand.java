@@ -36,8 +36,8 @@ public class Hand {
     }
 
 
-    @Override
-    public String toString(){
+
+    public String stringOfCardsInHandCurrently(){
         String cardsInHand = "";
         for (Card element: handOfCards) {
             cardsInHand+=element.getRank() +" of "+  element.getSuit();

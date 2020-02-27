@@ -2,6 +2,7 @@ package io.zipcoder.casino.GameClasses.CardGames;
 
 import io.zipcoder.casino.GameClasses.GamblingGame;
 import io.zipcoder.casino.GameClasses.Game;
+import io.zipcoder.casino.Player.Hand;
 import io.zipcoder.casino.Player.Player;
 
 public class BlackJack extends CardGame implements GamblingGame{
@@ -54,8 +55,9 @@ public class BlackJack extends CardGame implements GamblingGame{
         return null;
     }
 
+
     @Override
-    public Card dealCards(Integer numberOfCards) {
+    public Hand dealCards(Integer numberOfCards) {
         return null;
     }
 }

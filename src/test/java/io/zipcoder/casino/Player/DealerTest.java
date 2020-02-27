@@ -14,7 +14,7 @@ public class DealerTest {
         Dealer theDealer = new Dealer();
         Deck testDeck = new Deck().shuffle();
         Card expected = testDeck.getCurrentDeck().peek();
-        Card actual = theDealer.dealCard(testDeck);
+        Card actual = theDealer.dealCard(testDeck, theDealer);
         Assert.assertEquals(expected,actual);
 
     }

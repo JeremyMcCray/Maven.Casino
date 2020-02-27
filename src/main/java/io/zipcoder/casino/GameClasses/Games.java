@@ -10,7 +10,7 @@ public abstract class Games implements Game{
     private static ArrayList currentPlayers = new ArrayList(){};
     private static Integer numOfPlayers = currentPlayers.size();
 
-    public static void startGame(){
+    public void startGame(Membership currentMembership){
         numOfPlayers = currentPlayers.size();
         String welcome = "Welcome to the " + nameOfGame + " table, ";
         for (int i = 0;i < numOfPlayers;i++){

@@ -8,10 +8,7 @@ public class CardPlayer extends Player{
 Hand hand = new Hand();
 
     public CardPlayer(){
-        String playerName = "";
-        Integer balance = 0;
-        Integer age;
-        Membership playerAccount;
+
     }
 
 

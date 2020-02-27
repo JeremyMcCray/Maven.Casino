@@ -15,6 +15,10 @@ public abstract class Player {
     public void setPlayer(Membership player) {
         this.player = player;
     }
+    public Integer subtractBalance(Integer amountToSubtract){
+        this.balance -= amountToSubtract;
+        return balance;
+    }
 
 
 
@@ -28,7 +32,7 @@ public abstract class Player {
 
 
     public Integer getBalance() {
-        return balance;
+        return this.balance;
     }
 
     public void setBalance(Integer balance) {

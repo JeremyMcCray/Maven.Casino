@@ -16,6 +16,9 @@ public class Hand {
         return cardToBeAddedToHand;
 
     }
+    public ArrayList<Card> getHandOfCards(){
+        return this.handOfCards;
+    }
 
 
     public Card removeCardFromHand(Card cardToBeRemovedToHand){

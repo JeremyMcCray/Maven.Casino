@@ -4,13 +4,18 @@ import io.zipcoder.casino.CasinoClasses.ConsoleInput;
 import io.zipcoder.casino.CasinoClasses.ConsoleOutput;
 import io.zipcoder.casino.CasinoClasses.Membership;
 import io.zipcoder.casino.GameClasses.GamblingGame;
-import io.zipcoder.casino.GameClasses.Game;
-import io.zipcoder.casino.Player.BlackJackPlayer;
+import io.zipcoder.casino.GameClasses.Games;
 import io.zipcoder.casino.Player.Player;
 
-public class Craps implements GamblingGame, Game, ConsoleInput, ConsoleOutput {
+public class Craps extends Games implements GamblingGame, ConsoleInput, ConsoleOutput {
 
-    public Integer placeWager(Integer moneyToWager) {
+    @Override
+    public Player playerBuilder(Membership membership) {
+        return null;
+    }
+
+    public Integer placeWager(Integer moneyToWager,Player playerToCheckBalance) {
+
         return null;
     }
 
@@ -29,10 +34,6 @@ public class Craps implements GamblingGame, Game, ConsoleInput, ConsoleOutput {
         return null;
     }
 
-    public void startGame() {
-
-    }
-
     public Boolean quitGame() {
 
         return null;
@@ -48,28 +49,26 @@ public class Craps implements GamblingGame, Game, ConsoleInput, ConsoleOutput {
         return null;
     }
 
-    public Player playerBuilder(Membership currentPlayer) {
-        BlackJackPlayer player = new BlackJackPlayer(currentPlayer);
-        return player;
-    }
 
     public Boolean isTurn() {
 
         return null;
     }
 
-    @Override
+
     public String getNextPlay() {
+
         return null;
     }
 
-    @Override
+
     public String displayGameState() {
+
         return null;
     }
 
-    @Override
     public String displayNextAction() {
+
         return null;
     }
 }

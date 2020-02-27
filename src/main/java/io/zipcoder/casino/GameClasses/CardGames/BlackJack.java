@@ -4,62 +4,72 @@ import io.zipcoder.casino.CasinoClasses.ConsoleInput;
 import io.zipcoder.casino.CasinoClasses.ConsoleOutput;
 import io.zipcoder.casino.CasinoClasses.Membership;
 import io.zipcoder.casino.GameClasses.GamblingGame;
-import io.zipcoder.casino.GameClasses.Game;
 import io.zipcoder.casino.Player.BlackJackPlayer;
+import io.zipcoder.casino.Player.Hand;
 import io.zipcoder.casino.Player.Player;
 
-public class BlackJack implements GamblingGame, Game, ConsoleOutput, ConsoleInput {
-    private Player currentPlayer;
+import java.util.ArrayList;
+
+
+public class BlackJack extends CardGame implements GamblingGame, ConsoleOutput,ConsoleInput{
+    public Membership tempMember = new Membership("Jeremy",9999,1000,35);
+    public BlackJackPlayer currentPlayer = new BlackJackPlayer(tempMember);
+    private ArrayList<BlackJackPlayer> listOfBlackJackPlayers;
+    private Deck blackJackDeck = new Deck(7);
     private Integer currentWager = 0;
 
-    public Integer placeWager(Integer wager) {
-        if(currentPlayer.getBalance() > wager){
-            currentWager+=wager;
+    public BlackJack(Membership member){}
+    @Override
+    public Player playerBuilder(Membership membership) {
+       currentPlayer = new BlackJackPlayer(membership);
+        return super.playerBuilder(membership);
+    }
+
+
+
+    public Hand dealCardsToPlayer(Integer numberOfCards,BlackJackPlayer playerWhoGetsCards) {
+        for (int i = 0; i <numberOfCards; i++) {
+           Card tempCard = blackJackDeck.draw();
+            playerWhoGetsCards.getPlayerHand().getHandOfCards().add(tempCard);
         }
-        return currentWager;
+
+        return playerWhoGetsCards.getPlayerHand();
     }
 
-    public Integer addWinnings(Integer winnings) {
 
+
+    public Integer placeWager(Integer moneyToWager,BlackJackPlayer playersBalanceToCheck) {
+
+        if(playersBalanceToCheck.getBalance() >= moneyToWager) {
+            currentWager = moneyToWager;
+            playersBalanceToCheck.subtractBalance(currentWager);
+
+        }
+        return playersBalanceToCheck.getBalance();
+    }
+
+
+    //public Integer placeWager(Integer moneyToWager, Player playerToCheckBalance) {
+      //  return null;
+    //}
+
+    @Override
+    public Integer placeWager(Integer moneyToWager, Player playerToCheckBalance) {
         return null;
     }
 
-    public Integer subtractLoses(Integer losses) {
-
+    @Override
+    public Integer addWinnings(Integer moneyWon) {
         return null;
     }
 
+    @Override
+    public Integer subtractLoses(Integer moneyLost) {
+        return null;
+    }
+
+    @Override
     public Boolean checkPlayerBalances(Player player) {
-
-        return null;
-    }
-
-    public void startGame() {
-
-    }
-
-    public Boolean quitGame() {
-
-        return null;
-    }
-
-    public Boolean win() {
-
-        return null;
-    }
-
-    public Boolean playAgain() {
-
-        return null;
-    }
-
-    public Player playerBuilder(Membership currentMember) {
-        currentPlayer = new BlackJackPlayer(currentMember);
-        return currentPlayer;
-    }
-
-    public Boolean isTurn() {
-
         return null;
     }
 
@@ -75,6 +85,12 @@ public class BlackJack implements GamblingGame, Game, ConsoleOutput, ConsoleInpu
 
     @Override
     public String displayNextAction() {
+        return null;
+    }
+
+
+    @Override
+    public Hand dealCards(Integer numberOfCards, Player playerWhoGetsCard) {
         return null;
     }
 }

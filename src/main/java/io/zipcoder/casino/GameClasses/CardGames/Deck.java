@@ -8,7 +8,19 @@ import java.util.Stack;
 
 public class Deck {
     private Stack<Card> currentDeck = new Stack<Card>();
+    public Deck(Integer numberOfDecks){
+        for (int k = 0; k < numberOfDecks; k++) {
 
+
+        for (int i = 0;i<13;i++) {
+            EnumRank rank = EnumRank.values()[i];
+            for (int j = 0; j < 4; j++) {
+                Card newCard = new Card(rank, EnumSuit.values()[j]);
+                this.currentDeck.push(newCard);
+             }
+            }
+        }
+    }
     public Deck(){
         for (int i = 0;i<13;i++) {
             EnumRank rank = EnumRank.values()[i];

@@ -6,10 +6,10 @@ public class Membership {
     Integer balance = 0;
     Integer age = 0;
 
-    public Membership(String name, Integer idNumber, Integer balance, Integer age) {
+    public Membership(String name, Integer idNumber, Integer balancein, Integer age) {
         this.name = name;
         this.idNumber = idNumber;
-        this.balance = balance;
+        this.balance = balancein;
         this.age = age;
 
     }

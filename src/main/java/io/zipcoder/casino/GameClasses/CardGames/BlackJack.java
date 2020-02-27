@@ -13,15 +13,15 @@ import java.util.ArrayList;
 
 
 public class BlackJack extends CardGame implements GamblingGame, ConsoleOutput,ConsoleInput {
-    public Membership tempMember = new Membership("Jeremy", 9999, 1000, 35);
+  //  this is a temp membership for testing only public Membership tempMember = new Membership("Jeremy", 9999, 1000, 35);
     public BlackJackPlayer currentPlayer;
-    private ArrayList<BlackJackPlayer> listOfBlackJackPlayers;
+    private ArrayList<BlackJackPlayer> listOfBlackJackPlayers = new ArrayList<BlackJackPlayer>();
     private Deck blackJackDeck = new Deck(7);
     private Integer currentWager = 0;
 
     public BlackJack(Membership member) {
         this.currentPlayer = new BlackJackPlayer(member);
-        listOfBlackJackPlayers.add(this.currentPlayer);
+       listOfBlackJackPlayers.add(this.currentPlayer);
         setNameOfGame("BlackJack");
         setCurrentPlayers(listOfBlackJackPlayers);
         startGame();
@@ -49,32 +49,6 @@ public class BlackJack extends CardGame implements GamblingGame, ConsoleOutput,C
         return playerWhoGetsCards.getPlayerHand();
     }
 
-
-    //public Integer placeWager(Integer moneyToWager, Player playerToCheckBalance) {
-    //  return null;
-    //}
-
-    @Override
-    public Integer placeWager(Integer moneyToWager, Player playerToCheckBalance) {
-        return null;
-    }
-
-    @Override
-    public Integer addWinnings(Integer moneyWon) {
-        return null;
-    }
-
-    @Override
-    public Integer subtractLoses(Integer moneyLost) {
-        return null;
-    }
-
-    @Override
-    public Boolean checkPlayerBalances(Player player) {
-        return null;
-    }
-
-
     @Override
     public String getNextPlay() {
         return null;
@@ -95,6 +69,25 @@ public class BlackJack extends CardGame implements GamblingGame, ConsoleOutput,C
         return null;
     }
 
+    @Override
+    public Integer placeWager(Integer moneyToWager, Player playerToCheckBalance) {
 
-////////////this is uselessMethod////////////////
+        return null;
+    }
+
+    @Override
+    public Integer addWinnings(Integer moneyWon) {
+        return null;
+    }
+
+    @Override
+    public Integer subtractLoses(Integer moneyLost) {
+        return null;
+    }
+
+    @Override
+    public Boolean checkPlayerBalances(Player player) {
+        return null;
+    }
+
 }

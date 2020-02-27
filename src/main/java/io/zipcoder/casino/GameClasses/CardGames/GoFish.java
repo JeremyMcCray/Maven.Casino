@@ -42,7 +42,7 @@ public class GoFish extends CardGame {
     }
 
     // start the game
-    @Override
+
     public void startGame(Membership currentMembership) {
         deck.shuffle();
         for(int i=0; i<7;i++) {

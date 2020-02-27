@@ -6,17 +6,17 @@ import io.zipcoder.casino.CasinoClasses.ConsoleOutput;
 import io.zipcoder.casino.CasinoClasses.Membership;
 import io.zipcoder.casino.GameClasses.GamblingGame;
 import io.zipcoder.casino.GameClasses.Games;
+import io.zipcoder.casino.Player.CrapsPlayer;
+import io.zipcoder.casino.Player.Dealer;
 import io.zipcoder.casino.Player.Player;
 
-public class Craps extends Games implements GamblingGame, ConsoleInput, ConsoleOutput {
+
+import java.util.HashMap;
+
+public class Craps extends Games implements GamblingGame{
 
     @Override
-    public Player playerBuilder(Membership membership) {
-        return null;
-    }
-
-    public Integer placeWager(Integer moneyToWager,Player playerToCheckBalance) {
-
+    public Integer placeWager(Integer moneyToWager, Player playerToCheckBalance) {
         return null;
     }
 
@@ -37,9 +37,11 @@ public class Craps extends Games implements GamblingGame, ConsoleInput, ConsoleO
 
 //    public void startGame(Membership membership) { }
 
-    @Override
     public void startGame(Membership membership) {
-
+        CrapsPlayer currentPlayer = new CrapsPlayer(membership);
+        Dice twoDice = new Dice(2);
+        Dealer crapsDealer = new Dealer();
+        HashMap<String, Integer> betsOnTable = new HashMap<>();
     }
 
 

@@ -1,12 +1,25 @@
 package io.zipcoder.casino.GameClasses.DiceGames;
 
+import io.zipcoder.casino.CasinoClasses.Membership;
 import io.zipcoder.casino.GameClasses.GamblingGame;
 import io.zipcoder.casino.GameClasses.Game;
 import io.zipcoder.casino.GameClasses.Games;
+import io.zipcoder.casino.Player.CrapsPlayer;
+import io.zipcoder.casino.Player.Dealer;
 import io.zipcoder.casino.Player.Player;
 
-public class Craps extends Games implements GamblingGame{
+import java.util.HashMap;
 
+public class Craps extends Games implements GamblingGame,Game{
+    public Craps(){};
+
+    public void startGame(Membership membership){
+        HashMap<String, Integer> existingBets = new HashMap<>();
+        CrapsPlayer currentPlayer = new CrapsPlayer(membership);
+        Dice pairOfDice = new Dice(2);
+        Dealer crapsDealer = new Dealer();
+        HashMap<String, Integer> betsOnTable = new HashMap<>();
+    }
     public Integer placeWager() {
         return null;
     }

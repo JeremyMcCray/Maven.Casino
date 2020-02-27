@@ -10,7 +10,7 @@ local.properties
 .loadpath
 .recommenders
 pom.xml
-
+.idea/
 # External tool builders
 .externalToolBuilders/
 

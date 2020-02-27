@@ -7,7 +7,7 @@ import java.util.ArrayList;
 
 public interface Game {
 
-
+    public void startGame(Membership membership);
 
     public Boolean quitGame();
 
@@ -15,7 +15,9 @@ public interface Game {
 
     public Boolean playAgain();
 
+
     public Player playerBuilder(Membership currentPlayer);
+
 
     public Boolean isTurn();
 }

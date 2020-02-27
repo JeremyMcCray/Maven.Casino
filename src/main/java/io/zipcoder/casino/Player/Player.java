@@ -2,6 +2,7 @@ package io.zipcoder.casino.Player;
 
 import io.zipcoder.casino.CasinoClasses.Membership;
 
+
 public abstract class Player {
     private String playerName = "";
     private Integer balance = 0;
@@ -51,7 +52,11 @@ public abstract class Player {
 
 
 
-    public Integer win(){
+
+
+    public Integer win(Integer amount){
+        Integer amountWon =0;
+
 
 
         return null;

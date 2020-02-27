@@ -1,5 +1,6 @@
 package io.zipcoder.casino.GameClasses.DiceGames;
 
+
 import io.zipcoder.casino.CasinoClasses.ConsoleInput;
 import io.zipcoder.casino.CasinoClasses.ConsoleOutput;
 import io.zipcoder.casino.CasinoClasses.Membership;
@@ -34,6 +35,14 @@ public class Craps extends Games implements GamblingGame, ConsoleInput, ConsoleO
         return null;
     }
 
+//    public void startGame(Membership membership) { }
+
+    @Override
+    public void startGame(Membership membership) {
+
+    }
+
+
     public Boolean quitGame() {
 
         return null;
@@ -50,8 +59,8 @@ public class Craps extends Games implements GamblingGame, ConsoleInput, ConsoleO
     }
 
 
-    public Boolean isTurn() {
 
+    public Boolean isTurn() {
         return null;
     }
 
@@ -71,5 +80,7 @@ public class Craps extends Games implements GamblingGame, ConsoleInput, ConsoleO
 
         return null;
     }
+
+
 }
 

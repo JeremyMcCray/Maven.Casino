@@ -1,13 +1,18 @@
 package io.zipcoder.casino.CasinoClasses;
 
 
+import io.zipcoder.casino.GameClasses.Game;
+import io.zipcoder.casino.Player.Player;
+
 import java.util.HashMap;
 import java.util.Scanner;
 import java.util.logging.Logger;
 
+
 public class Casino{
     String casinoName = "";
     HashMap<String, Double> Players;
+
 
 
     public Casino (String CasinoName){

@@ -31,6 +31,7 @@ public class Membership {
     }
 
     public void setBalance(Integer amountToAdd){
-         this.balance+=amountToAdd;
+
+        this.balance+=amountToAdd;
     }
 }

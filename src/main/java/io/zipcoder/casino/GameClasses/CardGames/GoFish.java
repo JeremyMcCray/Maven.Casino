@@ -34,19 +34,35 @@ public class GoFish implements Game {
 
     private Deck deck;
 
-    public int randomTurnOrder() {
-        Random random = new Random();
-        return random.nextInt(2);
-    }
-
-    // start the game
-
+    // *******************************************************************************  start the game  ****************
     public void startGame(Membership currentMembership) {
 
-        GoFishPlayer currentPlayer= new GoFishPlayer(currentMembership);
+        setUpGameAndPlayer(currentMembership);
         System.out.println("             Welcome to Go Fish             : " + "\n");
         System.out.println("              Here is your Deck             : " + "\n");
+        System.out.println(playerHand.toString());
 
+        boolean gameNotDone = true;
+
+        while(gameNotDone == true){
+
+
+
+        }
+
+
+
+
+    }
+    // *******************************************************************************  Player Turn   ******************
+    private void playerTurn(){
+        System.out.println("Your Turn : Ask AI for preffered Card : ");
+    }
+
+
+    // *******************************************************************************  Set Up Game   ******************
+    public void setUpGameAndPlayer(Membership memberCredentials){
+        GoFishPlayer currentPlayer= new GoFishPlayer(memberCredentials);
         playerHand = new Hand();
         dealerHand = new Hand();
         // playerFile = new ArrayList<Integer>(13);
@@ -55,29 +71,24 @@ public class GoFish implements Game {
         deck = new Deck();
         deck.shuffle();
         turnOrder = randomTurnOrder();
-
         for(int i=0; i<7;i++) {
             playerHand.addCardToHand(deck.draw());
             dealerHand.addCardToHand(deck.draw());
         }
-
-        //                 "               Invalid Entry                : "
-
-        int cardNum = 1;
-        System.out.println(playerHand.toString());
-
     }
-
+    // *******************************************************************************  Random Turn Order  *************
+    public int randomTurnOrder() {
+        Random random = new Random();
+        return random.nextInt(2);
+    }
+    // *******************************************************************************  player Turn  *******************
     public void playerTurn(Card cardInHand) {
         if (dealerHand.checkIfCardIsInHand(cardInHand)) {
             playerHand.addCardToHand(cardInHand);
         } else
             console.println("Go fish! draw your card " + GoFish(playerHand,cardInHand));
-
     }
-
-
-    // when any player says GoFish
+    // *******************************************************************************  Go Fish   **********************
     private String GoFish(Hand hands,Card cardToBeAddedToHand) {
         if (deck.isEmpty()) {
             return "No Cards in Deck";
@@ -88,42 +99,27 @@ public class GoFish implements Game {
         }
     }
 
-
-
-
-
+    // **********************************    METHODS INHERITED _ NOT BEING USED  ***************************************
     public Boolean quitGame() {
         return null;
     }
-
     public Boolean win() {
         return null;
     }
-
     public Boolean playAgain() {
         return null;
     }
-
     public Player playerBuilder(Membership membership) {
         return null;
     }
-
     public Player playerBuilder() {
         return null;
     }
-
-
     public Boolean isTurn() {
         return null;
     }
-
     public Card dealCards(Integer numberOfCards) {
         return null;
     }
-//
-//    @Override
-//     void toString(){
-//        return this
-//    }
 }
 

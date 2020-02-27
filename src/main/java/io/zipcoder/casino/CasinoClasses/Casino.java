@@ -73,7 +73,7 @@ public class Casino{
     }
 
     // ******************************************************************************************** Getting A Number from User --- (Try catch - ensure a number is provided )**********
-    public Integer getNumber(){
+    public static Integer getNumber(){
         Integer numberInput = 0;
         boolean validNumber = false;
 

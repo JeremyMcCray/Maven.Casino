@@ -6,14 +6,14 @@ import io.zipcoder.casino.GameClasses.GamblingGame;
 
 public class BlackJackPlayer extends CardPlayer implements GamblerAttributes{
         String playerName = "";
-        public Integer balance;
+        public Integer gameBalance;
         Integer age;
         Membership playerAccount;
         Hand playerHand;
 
     public BlackJackPlayer(Membership playerAccount){
             this.playerName = playerAccount.getName();
-            this.balance = playerAccount.getBalance();
+            this.gameBalance = playerAccount.getBalance();
             this.age = playerAccount.getAge();
             this.playerAccount = playerAccount;
             this.playerHand = new Hand();
@@ -21,7 +21,12 @@ public class BlackJackPlayer extends CardPlayer implements GamblerAttributes{
 
 
     public Integer getBJPlayerBalance() {
-        return this.balance;
+        return this.gameBalance;
+    }
+
+    public Integer setBJPlayerBalance(Integer newBalance){
+        this.gameBalance=newBalance;
+        return gameBalance;
     }
 
     public Integer placeBet(Integer bet){

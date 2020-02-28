@@ -13,19 +13,16 @@ import io.zipcoder.casino.Player.Player;
 
 import java.util.HashMap;
 
-public class Craps extends Games implements GamblingGame{
+public class Craps extends Games implements GamblingGame {
 
-    @Override
-    public Integer placeWager(Integer moneyToWager, Player playerToCheckBalance) {
-        return null;
+
+    public static Integer addWinningsToPlayerBalance(CrapsPlayer playerWhoWon, Integer winnings) {
+        playerWhoWon.setGameBalance(playerWhoWon.getGameBalance() + winnings);
+        return playerWhoWon.getBalance();
     }
 
-    public Integer addWinnings(Integer winnings) {
 
-        return null;
-    }
-
-    public Integer subtractLoses(Integer losses) {
+    public Integer subtractLoses() {
 
         return null;
     }
@@ -42,6 +39,7 @@ public class Craps extends Games implements GamblingGame{
         Dice twoDice = new Dice(2);
         Dealer crapsDealer = new Dealer();
         HashMap<String, Integer> betsOnTable = new HashMap<>();
+
     }
 
 
@@ -61,7 +59,6 @@ public class Craps extends Games implements GamblingGame{
     }
 
 
-
     public Boolean isTurn() {
         return null;
     }
@@ -78,11 +75,19 @@ public class Craps extends Games implements GamblingGame{
         return null;
     }
 
-    public String displayNextAction() {
-
+    @Override
+    public Integer placeWager(Integer moneyToWager, Player playerToCheckBalance) {
         return null;
     }
 
+    @Override
+    public Integer addWinnings(Integer moneyWon) {
+        return null;
+    }
 
+    @Override
+    public Integer subtractLoses(Integer moneyLost) {
+        return null;
+
+    }
 }
-

@@ -17,13 +17,13 @@ public class BlackJackTest {
     }
 
     @Test
-    public void dealCardsToPlayer() {
+    public void dealCardToPlayer() {
         testPlayer.getPlayerHand();
 
-        Integer expected = 3;
-        blackJack.dealCardsToPlayer(3,testPlayer);
+        Integer expected = 1;
+        blackJack.dealCardToPlayer(testPlayer);
         Integer actual = testPlayer.getPlayerHand().getHandOfCards().size();
-
+        System.out.println();
         Assert.assertEquals(expected,actual);
     }
 
@@ -69,5 +69,13 @@ public class BlackJackTest {
     @Test
     public void startGame() {
 
+    }
+
+    @Test
+    public void sumAllCardsInAHand() {
+      blackJack.dealCardToPlayer(testPlayer);
+      System.out.println(testPlayer.getPlayerHand().stringOfCardsInHandCurrently());
+      blackJack.sumAllCardsInAHand(testPlayer);
+      assertTrue(false);
     }
 }

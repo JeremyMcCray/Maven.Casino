@@ -10,6 +10,10 @@ public class Hand {
     public Hand(){
     }
 
+    public void clearHand(){
+        handOfCards.clear();
+    }
+
     public Card addCardToHand(Card cardToBeAddedToHand){
 
          handOfCards.add(cardToBeAddedToHand);
@@ -43,7 +47,7 @@ public class Hand {
     public String stringOfCardsInHandCurrently(){
         String cardsInHand = "";
         for (Card element: handOfCards) {
-            cardsInHand+=element.getRank() +" of "+  element.getSuit();
+            cardsInHand+= "[ " + element.getRank() +" of "+  element.getSuit() + "] ";
         }
         return cardsInHand;
     }

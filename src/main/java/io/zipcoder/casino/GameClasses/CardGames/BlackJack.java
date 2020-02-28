@@ -39,7 +39,7 @@ public class BlackJack extends CardGame implements GamblingGame{
 
     }
 
-    public Boolean quitGame() {
+    public Boolean quitGame(int newBalance) {
 
         return null;
     }

@@ -19,4 +19,9 @@ public class Card {
     public EnumRank getRank() {
         return this.rank;
     }
+
 }
+
+
+
+

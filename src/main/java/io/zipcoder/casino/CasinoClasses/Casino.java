@@ -295,9 +295,10 @@ public class Casino {
                     vegas.goFishGame.startGame(vegas.currentMember);
                     keepPlaying = vegas.playAgain();
 
+
                 } else if (gamechoice == 4) {
 
-                    vegas.crapsGame.startGame();
+                    vegas.crapsGame.startGame(vegas.currentMember);
                     keepPlaying = vegas.playAgain();
 
                 } else {

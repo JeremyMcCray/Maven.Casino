@@ -282,7 +282,7 @@ public class Casino{
 
             }else if(gamechoice == 4){
 
-                vegas.crapsGame.startGame();
+                vegas.crapsGame.startGame(vegas.currentMember);
                 keepPlaying = vegas.playAgain();
 
             }else{

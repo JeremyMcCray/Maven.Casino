@@ -13,6 +13,11 @@ public class Membership {
         this.age = age;
 
     }
+
+    public Membership() {
+
+    }
+
     public Integer getBalance(){
 
         return this.balance;

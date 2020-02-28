@@ -32,7 +32,8 @@ public class GoFish implements Game {
     private boolean win;
     private int turnOrder;
 
-    private Deck deck;
+    Deck deck = new Deck().shuffle();
+
 
     public int randomTurnOrder() {
         Random random = new Random();
@@ -42,30 +43,24 @@ public class GoFish implements Game {
     // start the game
 
     public void startGame(Membership currentMembership) {
-
         GoFishPlayer currentPlayer= new GoFishPlayer(currentMembership);
-        System.out.println("             Welcome to Go Fish             : " + "\n");
-        System.out.println("              Here is your Deck             : " + "\n");
 
+        System.out.println("             Welcome to Go Fish             : " + currentMembership.getName()+"\n");
         playerHand = new Hand();
         dealerHand = new Hand();
         // playerFile = new ArrayList<Integer>(13);
         // opponentFile = new ArrayList<Integer>(13);
         endGameCheck = false;
-        deck = new Deck();
-        deck.shuffle();
         turnOrder = randomTurnOrder();
-
         for(int i=0; i<7;i++) {
             playerHand.addCardToHand(deck.draw());
             dealerHand.addCardToHand(deck.draw());
         }
-
         //                 "               Invalid Entry                : "
-
-        int cardNum = 1;
-        System.out.println(playerHand.toString());
-
+        //int cardNum = 1;
+        System.out.println("              Here is your Deck             : " +"\n");
+        System.out.println(playerHand.toString()+"\n");
+        System.out.println("Player hand is --> "+playerHand.getHandOfCards().size());
     }
 
     public void playerTurn(Card cardInHand) {
@@ -78,13 +73,17 @@ public class GoFish implements Game {
 
 
     // when any player says GoFish
-    private String GoFish(Hand hands,Card cardToBeAddedToHand) {
+    public String GoFish(Hand hands,Card cardToBeAddedToHand) {
+        System.out.println("I am here 1 ");
         if (deck.isEmpty()) {
+            System.out.println("I am here 2 ");
             return "No Cards in Deck";
-        } else {
 
+        } else {
+            System.out.println("I am here 3 ");
             hands.addCardToHand(cardToBeAddedToHand);
-            return card.toString();
+            System.out.println("I am here 4");
+            return hands.toString();
         }
     }
 

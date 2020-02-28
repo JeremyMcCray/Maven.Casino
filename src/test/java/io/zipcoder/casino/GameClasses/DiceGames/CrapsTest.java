@@ -179,6 +179,4 @@ public class CrapsTest {
         String actual = crapGame.pointRollOutcome(testRoll,testPlayer,"don't pass");
         Assert.assertEquals(expected,actual);
     }
-
-
 }

@@ -2,6 +2,9 @@ package io.zipcoder.casino.GameClasses.DiceGames;
 
 
 import io.zipcoder.casino.CasinoClasses.Membership;
+import io.zipcoder.casino.GameClasses.CardGames.Card;
+import io.zipcoder.casino.GameClasses.CardGames.EnumRank;
+import io.zipcoder.casino.GameClasses.CardGames.EnumSuit;
 import io.zipcoder.casino.Player.CrapsPlayer;
 import org.junit.Assert;
 import org.junit.Test;
@@ -14,6 +17,7 @@ public class CrapsTest {
     CrapsPlayer testPlayer = new CrapsPlayer(testMem);
     Dice testDice = new Dice(2);
     Craps crapGame = new Craps();
+    Card testCard = new Card(EnumRank.three,EnumSuit.hearts);
 
 
     @Test
@@ -123,6 +127,58 @@ public class CrapsTest {
         Assert.assertEquals(expected, actual);
     }
 
+    @Test
+    public void outcomeTestPassSetPoint5() {
+        Integer testRoll = 5;
+        String testBetType = "pass";
+        String expected = "Point set to 5!";
+        String actual = crapGame.outcome(testBetType, testRoll, testPlayer);
+        Assert.assertEquals(expected, actual);
+    }
+
+    @Test
+    public void outcomeTestDontPassSetPoint5() {
+        Integer testRoll = 5;
+        String testBetType = "don't pass";
+        String expected = "Point set to 5!";
+        String actual = crapGame.outcome(testBetType, testRoll, testPlayer);
+        Assert.assertEquals(expected, actual);
+    }
+
+    @Test
+    public void pointRollOutcomeTestPassPoint(){
+        crapGame.setPoint(5);
+        Integer testRoll = 5;
+        String expected = "win";
+        String actual = crapGame.pointRollOutcome(testRoll,testPlayer,"pass");
+        Assert.assertEquals(expected,actual);
+    }
+
+    @Test
+    public void pointRollOutcomeTestPass7(){
+        crapGame.setPoint(5);
+        Integer testRoll = 7;
+        String expected = "lose";
+        String actual = crapGame.pointRollOutcome(testRoll,testPlayer,"pass");
+        Assert.assertEquals(expected,actual);
+}
+    @Test
+    public void pointRollOutcomeTestDontPassPoint(){
+        crapGame.setPoint(5);
+        Integer testRoll = 5;
+        String expected = "lose";
+        String actual = crapGame.pointRollOutcome(testRoll,testPlayer,"don't pass");
+        Assert.assertEquals(expected,actual);
+    }
+
+    @Test
+    public void pointRollOutcomeTestDontPass7(){
+        crapGame.setPoint(5);
+        Integer testRoll = 7;
+        String expected = "win";
+        String actual = crapGame.pointRollOutcome(testRoll,testPlayer,"don't pass");
+        Assert.assertEquals(expected,actual);
+    }
 
 
 }

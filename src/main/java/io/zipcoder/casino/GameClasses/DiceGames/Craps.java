@@ -16,7 +16,15 @@ import java.util.Scanner;
 import static io.zipcoder.casino.Player.GamblerAttributes.winnings;
 
 public class Craps extends Games implements GamblingGame {
+    public Integer getPoint() {
+        return point;
+    }
 
+    public void setPoint(Integer point) {
+        this.point = point;
+    }
+
+    private Integer point = 0;
 
     public Integer placeWager() {
         return null;
@@ -57,26 +65,46 @@ public class Craps extends Games implements GamblingGame {
         Dealer crapsDealer = new Dealer();
         HashMap<String, Integer> betsOnTable = new HashMap<>();
         System.out.println("Welcome to the Craps Table!  Good luck! \n");
-       // System.out.println("Enter your bet type - Pass/Don't Pass");
         String betType = console.getStringInput("Enter your bet type - Pass/Don't Pass");
-       // String betType = playerPrompt().toLowerCase();
         System.out.println("Enter bet amount!");
-        Integer betAmount = Integer.parseInt(playerPrompt());
+        Integer betAmount = Integer.parseInt(console.getStringInput("Enter bet amount!"));
         System.out.println("Bets are placed, let's roll!");
         Integer roll = twoDice.rollAndSum(twoDice);
-        System.out.println("You rolled a" + roll + "!");
+        System.out.println("You rolled a " + roll + "!");
         String outcome = outcome(betType, roll, currentPlayer);
 
 
     }
 
+    public String pointRollOutcome(Integer roll, CrapsPlayer bettor, String betType){
+        if (betType == "pass") {
+            if (roll == point) {
+                return "win";
+            }
+            if (roll == 7) {
+                return "lose";
+            }
+        }
+        if (betType == "don't pass"){
+            if (roll == point){
+                return "lose";
+            }
+            if (roll == 7){
+                return "win";
+            }
+        }
+        return "error";
+    }
+
     public String outcome(String betType, Integer roll, CrapsPlayer bettor) {
-        Integer point = 0;
         if (betType == "pass") {
             if (roll == 7 || roll == 11) {
                 return "win";
             } else if (roll == 2 || roll == 3 || roll == 12) {
                 return "lose";
+            } else {
+                point = roll;
+                return "Point set to " + point + "!";
             }
         }
         if (betType == "don't pass") {
@@ -86,20 +114,13 @@ public class Craps extends Games implements GamblingGame {
                 return "lose";
             } else if (roll == 12) {
                 return "push";
+            } else {
+                point = roll;
+                return "Point set to " + point + "!";
             }
-
         }
+
         return "error";
-    }
-
-
-
-
-
-
-    public String playerPrompt(){
-        Scanner playerInput = new Scanner(System.in);
-        return playerInput.nextLine();
     }
 
     public Boolean quitGame() {

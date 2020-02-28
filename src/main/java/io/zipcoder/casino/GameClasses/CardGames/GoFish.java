@@ -14,12 +14,12 @@ import java.util.List;
 import java.util.Random;
 
 
-public class GoFish extends CardGame {
+public class GoFish implements Game {
 
     private Player player;
     private Integer num0fPlayers;
     private Hand playerHand;
-    private Hand otherPlayerHand;
+    private Hand dealerHand;
     private Card card;
     private Dealer gfDealer = new Dealer();
     private Console console = new Console(System.in, System.out);
@@ -34,8 +34,6 @@ public class GoFish extends CardGame {
 
     private Deck deck;
 
-
-
     public int randomTurnOrder() {
         Random random = new Random();
         return random.nextInt(2);
@@ -44,34 +42,43 @@ public class GoFish extends CardGame {
     // start the game
 
     public void startGame(Membership currentMembership) {
+
+        GoFishPlayer currentPlayer = new GoFishPlayer(currentMembership);
+        System.out.println("             Welcome to Go Fish             : " + "\n");
+        System.out.println("              Here is your Deck             : " + "\n");
+
+        playerHand = new Hand();
+        dealerHand = new Hand();
+        // playerFile = new ArrayList<Integer>(13);
+        // opponentFile = new ArrayList<Integer>(13);
+        endGameCheck = false;
+        deck = new Deck();
         deck.shuffle();
-        for(int i=0; i<7;i++) {
-            playerHand.addCardToHand(card);
-            otherPlayerHand.addCardToHand(card);
+        turnOrder = randomTurnOrder();
+
+        for (int i = 0; i < 7; i++) {
+            playerHand.addCardToHand(deck.draw());
+            dealerHand.addCardToHand(deck.draw());
         }
 
-        GoFishPlayer currentPlayer= new GoFishPlayer(currentMembership);
-                this.playerHand = new Hand();
-                this.otherPlayerHand = new Hand();
-                // playerFile = new ArrayList<Integer>(13);
-                // opponentFile = new ArrayList<Integer>(13);
-                endGameCheck = false;
-                this.deck = new Deck();
-                deck.shuffle();
-                turnOrder = randomTurnOrder();
+        //                 "               Invalid Entry                : "
+
+        int cardNum = 1;
+        System.out.println(playerHand.toString());
+
     }
 
     public void playerTurn(Card cardInHand) {
-        if (otherPlayerHand.checkIfCardIsInHand(cardInHand)) {
+        if (dealerHand.checkIfCardIsInHand(cardInHand)) {
             playerHand.addCardToHand(cardInHand);
         } else
-            console.println("Go fish! draw your card " + GoFish(playerHand,cardInHand));
+            console.println("Go fish! draw your card " + GoFish(playerHand, cardInHand));
 
     }
 
 
     // when any player says GoFish
-    private String GoFish(Hand hands,Card cardToBeAddedToHand) {
+    private String GoFish(Hand hands, Card cardToBeAddedToHand) {
         if (deck.isEmpty()) {
             return "No Cards in Deck";
         } else {
@@ -80,9 +87,6 @@ public class GoFish extends CardGame {
             return card.toString();
         }
     }
-
-
-
 
 
     public Boolean quitGame() {
@@ -97,7 +101,6 @@ public class GoFish extends CardGame {
         return null;
     }
 
-    @Override
     public Player playerBuilder(Membership membership) {
         return null;
     }
@@ -111,9 +114,14 @@ public class GoFish extends CardGame {
         return null;
     }
 
-    @Override
-    public Hand dealCards(Integer numberOfCards, Player playerWhoGetsCard) {
-        return null;
+
+    public void dealCards(Integer numberOfCards, Player playerWhoGetsCard) {
+
+//
+//    @Override
+//     void toString(){
+//        return this
+//    }
     }
 }
 

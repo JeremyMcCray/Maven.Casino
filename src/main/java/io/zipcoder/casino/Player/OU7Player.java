@@ -14,7 +14,7 @@ public class OU7Player extends Player{
         this.balance = playerAccount.getBalance();
         this.age = playerAccount.getAge();
         this.playerAccount = playerAccount;
-        this.idNumber = idNumber;
+        this.idNumber = playerAccount.getIdNumber();
     }
 
     public String getName(){
@@ -32,9 +32,6 @@ public class OU7Player extends Player{
         return this.idNumber;
     }
 
-    public Integer getBalance() {
-        return balance;
-    }
 
     public void setBalance(Integer amountToAdd) {
         this.balance += amountToAdd;

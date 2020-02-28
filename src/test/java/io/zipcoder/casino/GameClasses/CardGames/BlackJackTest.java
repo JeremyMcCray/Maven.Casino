@@ -10,7 +10,7 @@ import static org.junit.Assert.*;
 public class BlackJackTest {
     Membership newMember = new Membership("jerm",9324,900,33);
     BlackJackPlayer testPlayer = new BlackJackPlayer(newMember);
-    BlackJack blackJack = new BlackJack(newMember);
+    BlackJack blackJack = new BlackJack();
     //blackJack.currentPlayer = newMember;
     @Test
     public void playerBuilder() {
@@ -30,7 +30,7 @@ public class BlackJackTest {
     @Test
     public void placeWagerTest() {
         Membership newMember = new Membership("jerm",9324,900,33);
-        BlackJack blackJack = new BlackJack(newMember);
+        BlackJack blackJack = new BlackJack();
         BlackJackPlayer testPlayer = new BlackJackPlayer(newMember);
 
         Integer actual = blackJack.placeWager(100,testPlayer);

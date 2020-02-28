@@ -1,6 +1,7 @@
 package io.zipcoder.casino.Player;
 
 import io.zipcoder.casino.GameClasses.CardGames.Card;
+import io.zipcoder.casino.GameClasses.CardGames.EnumSuit;
 
 import java.util.ArrayList;
 
@@ -10,8 +11,10 @@ public class Hand {
     public Hand(){
     }
 
+
     public void clearHand(){
         handOfCards.clear();
+
     }
 
     public Card addCardToHand(Card cardToBeAddedToHand){
@@ -47,7 +50,9 @@ public class Hand {
     public String stringOfCardsInHandCurrently(){
         String cardsInHand = "";
         for (Card element: handOfCards) {
+
             cardsInHand+= "[ " + element.getRank() +" of "+  element.getSuit() + "] ";
+
         }
         return cardsInHand;
     }

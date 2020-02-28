@@ -25,7 +25,7 @@ public class BlackJack extends CardGame implements GamblingGame, ConsoleOutput,C
     private Boolean gameRunning = true;
     Console console = new Console(System.in,System.out);
 
-    public BlackJack(Membership member) {
+    public void setUpGame(Membership member) {
         this.currentPlayer = new BlackJackPlayer(member);
        listOfBlackJackPlayers.add(this.currentPlayer);
         setNameOfGame("BlackJack");
@@ -76,7 +76,8 @@ public class BlackJack extends CardGame implements GamblingGame, ConsoleOutput,C
     }
 
 
-    public void startGame() {
+    public void startGame(Membership member) {
+        setUpGame(member);
         Scanner input = new Scanner(System.in);
         blackJackDeck.shuffle();
         do{
@@ -139,7 +140,7 @@ public class BlackJack extends CardGame implements GamblingGame, ConsoleOutput,C
     }
 
 
-    public void startGame(Membership membership) {
+    public void startGame() {
 
     }
 
@@ -221,7 +222,7 @@ public class BlackJack extends CardGame implements GamblingGame, ConsoleOutput,C
 
     public static void main(String[] args) {
         Membership tempMember = new Membership("Jeremy", 9999, 1000, 35);
-        BlackJack bjGame = new BlackJack(tempMember);
+        BlackJack bjGame = new BlackJack();
 
 
         bjGame.startGame();

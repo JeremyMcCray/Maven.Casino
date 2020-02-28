@@ -92,24 +92,24 @@ public class BlackJack extends CardGame implements GamblingGame, ConsoleOutput,C
             currentPlayer.getPlayerHand().addCardToHand(dealer.dealCard(blackJackDeck));
             System.out.println("your hand is currently " + currentPlayer.getPlayerHand().stringOfCardsInHandCurrently());
             dealer.getDealerHand().addCardToHand(dealer.dealCard(blackJackDeck));
-            String playerChoice = console.getStringInput("Do you want to Hit or Stand? sir");
+            String playerChoice = console.getStringInput("Do you want to Hit or Stand? ");
 
             if(!hitOrStand(playerChoice).equals("hit") || !hitOrStand(playerChoice).equals("stand") || !hitOrStand(playerChoice).equals("Bust! :(")){
                 do{
-                    System.out.println("Do you want to Hit or Stand?");
+                    System.out.println("Just Hit again idk at this point why you have to but do it please");
                      playerChoice = input.nextLine();
                 } while(hitOrStand(playerChoice).equals("Bad Input"));
             }
-            String playerAnswer = console.getStringInput("Press 1 to play again or 2 to go back to casino");
-            if(playerAnswer.equals("1")){
-                currentPlayer.getPlayerHand().clearHand();
-                dealer.getDealerHand().clearHand();
-                startGame();
-
-            }else{
-                gameRunning = false;
-            }
-
+//            String playerAnswer = console.getStringInput("Press 1 to play again or 2 to go back to casino");
+//            if(playerAnswer.equals("1")){
+//                currentPlayer.getPlayerHand().clearHand();
+//                dealer.getDealerHand().clearHand();
+//                gameRunning=true;
+//
+//            }else{
+//                gameRunning = false;
+//            }
+            gameRunning=false;
         }while(gameRunning);
 
     }
@@ -132,6 +132,68 @@ public class BlackJack extends CardGame implements GamblingGame, ConsoleOutput,C
         return playerWhoGetsCards.getPlayerHand();
 
     }
+
+
+    public String hitOrStand(String hitOrStandOnHand){
+
+        if(hitOrStandOnHand.toLowerCase().equals("hit")) {
+            currentPlayer.getPlayerHand().addCardToHand(dealer.dealCard(blackJackDeck));
+            System.out.println("your hand is now " + currentPlayer.getPlayerHand().stringOfCardsInHandCurrently());
+            System.out.println("your hand sum is " + sumAllCardsInAHand(currentPlayer) + "");
+
+            if(sumAllCardsInAHand(currentPlayer).equals(21)){
+                console.print("BlackJack!");
+                currentPlayer.gameBalance+= currentPot;
+                currentPot = 0;
+
+            }else if(sumAllCardsInAHand(currentPlayer)>21){
+                console.print("Bust! :(");
+                currentPot = 0;
+                return "Bust! :(";
+
+            }else {
+                hitOrStandOnHand = console.getStringInput("Hit again or stand?");
+
+                hitOrStand(hitOrStandOnHand);
+
+                return "hart";
+            }
+        }else if(hitOrStandOnHand.toLowerCase().equals("stand")){
+            System.out.println("You stand with the hand " + currentPlayer.getPlayerHand().stringOfCardsInHandCurrently()+"\n"+"Your hand sum was" + sumAllCardsInAHand(currentPlayer));
+
+            System.out.println("The dealer has " + dealer.getDealerHand().stringOfCardsInHandCurrently());
+            return "Stand";
+        }else{
+            System.out.println("Please enter Hit or Stand");
+            return "Bad Input";
+        }
+        return "";
+    }
+
+
+ //////these methods are useless as far as I canTell//
+
+
+    public Integer addWinnings(Integer moneyWon) {
+        return null;
+    }
+
+
+    public Integer subtractLoses(Integer moneyLost) {
+        return null;
+    }
+
+
+    public Boolean checkPlayerBalances(Player player) {
+
+        return null;
+    }
+
+
+    public Integer placeWager(Integer moneyToWager, Player playerToCheckBalance) {
+        return null;
+    }
+
     public Boolean loseCheckerTrueMeansLose(BlackJackPlayer playerToTestIfWon){
         if(sumAllCardsInAHand(playerToTestIfWon) > 21){
             return true;
@@ -144,88 +206,31 @@ public class BlackJack extends CardGame implements GamblingGame, ConsoleOutput,C
 
     }
 
+
+
+    public Boolean quitGame(int newBalance) {
+
+        return null;
+    }
+
+
     @Override
     public String getNextPlay() {
         return null;
     }
 
-    @Override
     public String displayGameState() {
         return null;
     }
 
-    @Override
+
     public String displayNextAction() {
         return null;
     }
 
-    @Override
+
     public Hand dealCards(Integer numberOfCards, Player playerWhoGetsCard) {
         return null;
-    }
-    public String hitOrStand(String hitOrStandOnHand){
-
-        if(hitOrStandOnHand.toLowerCase().equals("hit")) {
-            currentPlayer.getPlayerHand().addCardToHand(dealer.dealCard(blackJackDeck));
-            System.out.println("your hand is now " + currentPlayer.getPlayerHand().stringOfCardsInHandCurrently());
-            System.out.println("your hand sum is " + sumAllCardsInAHand(currentPlayer) + "");
-            if(sumAllCardsInAHand(currentPlayer).equals(21)){
-                console.print("BlackJack!");
-                currentPlayer.gameBalance+= currentPot;
-                currentPot = 0;
-            }else if(sumAllCardsInAHand(currentPlayer)>21){
-                console.print("Bust! :(");
-                currentPot = 0;
-                return "Bust! :(";
-            }else {
-                hitOrStandOnHand = console.getStringInput("Hit again or stand?");
-
-                hitOrStand(hitOrStandOnHand);
-
-                return "Hit";
-            }
-        }else if(hitOrStandOnHand.toLowerCase().equals("stand")){
-            System.out.println("You stand with the hand " + currentPlayer.getPlayerHand().stringOfCardsInHandCurrently());
-            System.out.println("The dealer has " + dealer.getDealerHand().stringOfCardsInHandCurrently());
-            return "Stand";
-        }else{
-            System.out.println("Please enter Hit or Stand");
-            return "Bad Input";
-        }
-        return "asd";
-    }
-
-
- //////these methods are useless as far as I canTell//
-
-    @Override
-    public Integer addWinnings(Integer moneyWon) {
-        return null;
-    }
-
-    @Override
-    public Integer subtractLoses(Integer moneyLost) {
-        return null;
-    }
-
-    @Override
-    public Boolean checkPlayerBalances(Player player) {
-
-        return null;
-    }
-
-    @Override
-    public Integer placeWager(Integer moneyToWager, Player playerToCheckBalance) {
-        return null;
-    }
-
-
-    public static void main(String[] args) {
-        Membership tempMember = new Membership("Jeremy", 9999, 1000, 35);
-        BlackJack bjGame = new BlackJack();
-
-
-        bjGame.startGame();
     }
 
 }

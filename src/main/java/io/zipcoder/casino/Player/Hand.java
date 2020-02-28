@@ -31,13 +31,17 @@ public class Hand {
     }
 
     public Boolean checkIfCardIsInHand(Card cardToCheck){
+        boolean isInHAnd = false;
+
         for (Card cards: handOfCards) {
             if (cards.getSuit().equals(cardToCheck.getSuit()) && cards.getRank().equals(cardToCheck.getRank())){
-             return true;
+             isInHAnd = true;
+            }else{
+                isInHAnd = false;
             }
 
         }
-        return false;
+        return isInHAnd;
     }
 
 

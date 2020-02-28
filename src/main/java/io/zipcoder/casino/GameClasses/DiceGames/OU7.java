@@ -23,8 +23,8 @@ public class OU7 implements Game, ConsoleInput, ConsoleOutput {
         Boolean keepPlaying = true;
 
         while (keepPlaying.equals(true)) {
-            System.out.println("Welcome to Over/Under 7" + ou7Player1.getName() + "\n\n");
-            System.out.println("Enter your bet type - Over/Under 7");
+            System.out.println("\n\n" + "            Welcome to Over/Under 7             : " + ou7Player1.getName() + "\n");
+            System.out.print           ("      Enter your bet type - Over/Under 7        : ");
             Scanner playerInput = new Scanner(System.in);
             String playerGuess = playerInput.nextLine();
             Boolean guess = evaluateGuessToRoll(pairOfDice, playerGuess);
@@ -45,11 +45,13 @@ public class OU7 implements Game, ConsoleInput, ConsoleOutput {
     public Boolean evaluateGuessToRoll(Dice rolledDice, String actualGuess) {
 
         Integer thisTurnsRoll = rolledDice.rollAndSum(pairOfDice);
-        if (actualGuess.equals("Over") && thisTurnsRoll > 7) {
+        //                 "      Enter your bet type - Over/Under 7        : "
+        System.out.println("                  Your Roll                     : " + thisTurnsRoll);
+        if (thisTurnsRoll > 7 && actualGuess.equals("Over") || actualGuess.equals("over")) {
             System.out.println("Congrats! You win");
             // gameBalance += betAmount;
             return true;
-        } else if (actualGuess.equals("Under") && thisTurnsRoll < 7) {
+        } else if (thisTurnsRoll < 7 && actualGuess.equals("Under") ||  actualGuess.equals("under")){
             // gameBalance += betAmount;
             System.out.println("Congrats! You win");
             return true;

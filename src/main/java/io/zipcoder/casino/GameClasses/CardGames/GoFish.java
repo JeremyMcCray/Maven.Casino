@@ -74,15 +74,11 @@ public class GoFish implements Game {
 
     // when any player says GoFish
     public String GoFish(Hand hands,Card cardToBeAddedToHand) {
-        System.out.println("I am here 1 ");
         if (deck.isEmpty()) {
-            System.out.println("I am here 2 ");
             return "No Cards in Deck";
-
         } else {
-            System.out.println("I am here 3 ");
             hands.addCardToHand(cardToBeAddedToHand);
-            System.out.println("I am here 4");
+            //System.out.println("I am here 4");
             return hands.toString();
         }
     }

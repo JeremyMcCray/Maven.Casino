@@ -20,4 +20,12 @@ public class CrapsTest {
         Integer expected = 2100;
         Assert.assertEquals(expected,actual);
     }
+
+    @Test
+    public void subtractLossesFromPlayerBalanceTest(){
+        Craps.subtractLossesFromPlayerBalance(testPlayer,100);
+        Integer actual = testPlayer.getGameBalance();
+        Integer expected = 1900;
+        Assert.assertEquals(expected,actual);
+    }
 }

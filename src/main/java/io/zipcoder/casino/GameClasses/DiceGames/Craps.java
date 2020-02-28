@@ -10,6 +10,8 @@ import io.zipcoder.casino.Player.Player;
 
 import java.util.HashMap;
 
+import static io.zipcoder.casino.Player.GamblerAttributes.winnings;
+
 public class Craps extends Games implements GamblingGame{
 
     public Integer placeWager() {
@@ -21,6 +23,11 @@ public class Craps extends Games implements GamblingGame{
         return null;
     }
 
+    @Override
+    public Integer subtractLoses() {
+        return null;
+    }
+
 
     public static Integer addWinningsToPlayerBalance(CrapsPlayer playerWhoWon, Integer winnings) {
         playerWhoWon.setGameBalance(playerWhoWon.getGameBalance()+winnings);
@@ -29,8 +36,9 @@ public class Craps extends Games implements GamblingGame{
 
 
 
-    public Integer subtractLoses() {
-        return null;
+    public static Integer subtractLossesFromPlayerBalance(CrapsPlayer playerWhoLost, Integer losses) {
+        playerWhoLost.setGameBalance(playerWhoLost.getGameBalance()-losses);
+        return playerWhoLost.getBalance();
     }
 
     public Boolean checkPlayerBalances() {

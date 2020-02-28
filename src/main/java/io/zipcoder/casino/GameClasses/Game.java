@@ -9,6 +9,7 @@ public interface Game {
 
     public void startGame(Membership membership);
 
+
     public Boolean quitGame();
 
     public Boolean win();

@@ -11,7 +11,8 @@ public class StorageTest{
     public void setGetStorageTest(){
         Membership newMem = new Membership("Bilbo Baggins",1234, 1000, 111);
         Membership addMem = new Membership("Gandalf Gray", 2345, 9000,900);
-        Storage newStorage = new Storage(newMem);
+        Storage newStorage = new Storage();
+        newStorage.addMemberToStorage(newMem);
         newStorage.addMemberToStorage(addMem);
         String expected = "Gandalf Gray";
         String actual = newStorage.getMemberStorage().get(2345).getName();

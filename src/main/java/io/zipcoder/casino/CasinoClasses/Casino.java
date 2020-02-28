@@ -1,5 +1,8 @@
 package io.zipcoder.casino.CasinoClasses;
-
+import io.zipcoder.casino.GameClasses.CardGames.BlackJack;
+import io.zipcoder.casino.GameClasses.CardGames.GoFish;
+import io.zipcoder.casino.GameClasses.DiceGames.Craps;
+import io.zipcoder.casino.GameClasses.DiceGames.OU7;
 
 import io.zipcoder.casino.GameClasses.Game;
 import io.zipcoder.casino.Player.Player;
@@ -10,15 +13,23 @@ import java.util.logging.Logger;
 
 
 public class Casino{
+
+    Storage storage;
     String casinoName = "";
-    HashMap<String, Double> Players;
+    Membership currentMember;
+
+    GoFish goFishGame = new GoFish();
+    Craps crapsGame = new Craps();
+    public OU7 ou7Game = new OU7();
+    BlackJack blackJackGame = new BlackJack();
 
 
+    // ******************************************************************************************** Casino Constructor **********
 
     public Casino (String CasinoName){
         this.casinoName = CasinoName;
+        storage = new Storage();
     }
-
     // ******************************************************************************************** Welcome **********
 
     public void welcomeMessage(){
@@ -26,9 +37,8 @@ public class Casino{
         System.out.println(    "Hope you enjoy your stay at " + casinoName + "\n");
     }
 
-    // ******************************************************************************************** Getting String iput from User **********
+    // ******************************************************************************************** Getting String input from User **********
     public String getUserInput(){
-
         Scanner readInput = new Scanner(System.in);
         String userInput = readInput.nextLine();
         return userInput;
@@ -90,6 +100,7 @@ public class Casino{
         Integer userPin = getNumber();
 
         boolean validPin = false;
+
         while(validPin == false){
 
             int length = String.valueOf(userPin).length();
@@ -109,6 +120,9 @@ public class Casino{
     }
     // ******************************************************************************************** Getting Initial balance from User - $50 minimum & $10,000 Max **********
     public Integer collectStartingBalance(String userName, Integer accountNumber){
+        //                 "                Error :     $50 Minimum     : $"
+        System.out.println("\n" + "Now Deposit Initial Balance For Your Account:");
+        System.out.print("Deposit Must Be   ($50 min $10,000 Max)     : $");
         Integer userBalance = getNumber();
 
         boolean validBalance = false;
@@ -169,7 +183,7 @@ public class Casino{
     }
 
     // ******************************************************************************************** Method to collect all account data from User ( Calls other methods )**********
-    public Membership createrMembership(){
+    public Membership createMembership(){
 
         String userName = collectName();
         Integer accountNumber = collectAccountNumber(userName);
@@ -179,15 +193,103 @@ public class Casino{
         Membership newMember = new Membership(userName,accountNumber,startingBalance,userAge);
         return newMember;
     }
+    // ******************************************************************************************** check if membership and work with them
+    public boolean checkIfExistingAccount(Integer accountNumber){
+
+        boolean containsKey = storage.memberStorage.containsKey(accountNumber);
+        return containsKey;
+    }
+    // ******************************************************************************************** Play Again
+    public boolean playAgain(){
+
+        System.out.print("Play Another game ? Or leave Casino  ?      : " + "\n" +
+                           "Enter 0 to leave or 1 to play another game  : ");
+        Integer choice = getNumber();
+        boolean playAgain = false;
+        boolean exitLoop = false;
+
+        while(exitLoop == false){
+            if(choice == 0){
+
+                playAgain = false;
+                exitLoop = true;
+            }else if(choice == 1){
+
+                playAgain = true;
+                exitLoop = true;
+            }else{
+                System.out.print("Please enter 0 to leave or 1 to keep playing: ");
+                choice = getNumber();
+            }
+        }
+        return playAgain;
+    }
 
     // ******************************************************************************************** Temporary main for running Casino Methods *******************************************
     public static void main(String[] args) {
+
         Casino vegas = new Casino("King Jimmy");
         vegas.welcomeMessage();
-        boolean ismember = vegas.getMemberStatus();
-        if(ismember == false){
-            Membership current = vegas.createrMembership();
+        boolean isMember = vegas.getMemberStatus();
+
+        if(isMember == false){
+            vegas.currentMember = vegas.createMembership();
+        } else {
+
+            System.out.print("\n" + "Please Enter your Account Number | Pin      : ");
+            Integer supposedID = vegas.getNumber();
+            boolean foundAccount = vegas.checkIfExistingAccount(supposedID);
+
+            if(foundAccount == false){
+
+                System.out.println("Errrrrrr you poser, get out of here !");
+
+            }else {
+
+                vegas.currentMember = vegas.storage.getMember(supposedID);
+                System.out.println("Woohoo Nothing is set up yet - wait in the lobby");
+            }
         }
+
+        boolean keepPlaying = true;
+
+        while(keepPlaying == true){
+
+            System.out.println("Chose which game you would like to play     : " + "\n" + "\n");
+
+            System.out.println("Game 1 : Over Under Seven " + "\n" +
+                               "Game 2 : Black Jack" + "\n" +
+                               "Game 3 : Go Fish" + "\n" +
+                               "Game 4 : Craps");
+
+            System.out.print("Enter 1 - 2 - 3 - 4 : Chose your Poison     : ");
+            Integer gamechoice = vegas.getNumber();
+
+            if(gamechoice == 1){
+
+                vegas.ou7Game.startGame(vegas.currentMember);
+                keepPlaying = vegas.playAgain();
+
+            }else if(gamechoice == 2){
+
+                vegas.blackJackGame.startGame();
+                keepPlaying = vegas.playAgain();
+
+            }else if(gamechoice == 3){
+
+                vegas.goFishGame.startGame(vegas.currentMember);
+                keepPlaying = vegas.playAgain();
+
+            }else if(gamechoice == 4){
+
+                vegas.crapsGame.startGame();
+                keepPlaying = vegas.playAgain();
+
+            }else{
+                System.out.println("               Invalid Entry                : ");
+            }
+        }
+
     }
 }
 

@@ -17,6 +17,7 @@ import static io.zipcoder.casino.Player.GamblerAttributes.winnings;
 
 public class Craps extends Games implements GamblingGame {
 
+
     public Integer placeWager() {
         return null;
     }

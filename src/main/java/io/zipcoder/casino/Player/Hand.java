@@ -7,6 +7,7 @@ import java.util.ArrayList;
 
 public class Hand {
     ArrayList<Card> handOfCards = new ArrayList<Card>();
+    Integer numberOfCards = handOfCards.size();
 
     public Hand(){
     }
@@ -42,6 +43,10 @@ public class Hand {
 
         }
         return isInHAnd;
+    }
+
+    public Integer getNumberOfCards() {
+        return numberOfCards;
     }
 
 

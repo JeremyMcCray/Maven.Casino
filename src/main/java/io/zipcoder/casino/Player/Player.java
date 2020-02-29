@@ -8,6 +8,7 @@ public abstract class Player {
     private Integer balance = 0;
     private Integer age;
     private Membership player;
+    private Hand hand;
 
     public Membership getPlayer() {
         return player;

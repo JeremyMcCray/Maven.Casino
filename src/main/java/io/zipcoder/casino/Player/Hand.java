@@ -1,6 +1,7 @@
 package io.zipcoder.casino.Player;
 
 import io.zipcoder.casino.GameClasses.CardGames.Card;
+import io.zipcoder.casino.GameClasses.CardGames.EnumSuit;
 
 import java.util.ArrayList;
 
@@ -9,6 +10,10 @@ public class Hand {
     Integer numberOfCards = handOfCards.size();
 
     public Hand(){
+    }
+
+    public ArrayList<Card> getHandOfCards(){
+        return this.handOfCards;
     }
 
     public Card addCardToHand(Card cardToBeAddedToHand){
@@ -27,13 +32,17 @@ public class Hand {
     }
 
     public Boolean checkIfCardIsInHand(Card cardToCheck){
+        boolean isInHAnd = false;
+
         for (Card cards: handOfCards) {
             if (cards.getSuit().equals(cardToCheck.getSuit()) && cards.getRank().equals(cardToCheck.getRank())){
-             return true;
+             isInHAnd = true;
+            }else{
+                isInHAnd = false;
             }
 
         }
-        return false;
+        return isInHAnd;
     }
 
     public Integer getNumberOfCards() {
@@ -45,8 +54,19 @@ public class Hand {
     public String toString(){
         String cardsInHand = "";
         for (Card element: handOfCards) {
-            cardsInHand+=element.getRank() +" of "+  element.getSuit();
+            String suite = "";
+            if(element.getSuit().equals(EnumSuit.diamonds)){
+                suite += "<>";
+            }else if(element.getSuit().equals(EnumSuit.hearts)){
+                suite += "<3";
+            }else if(element.getSuit().equals(EnumSuit.spades)){
+                suite += "SPD";
+            }else if(element.getSuit().equals(EnumSuit.clubs)){
+                suite += ">|<";
+            }
+             cardsInHand+="              [ " + element.getRank() +" - "+  suite + "]" +"\n";
         }
         return cardsInHand;
     }
+
 }

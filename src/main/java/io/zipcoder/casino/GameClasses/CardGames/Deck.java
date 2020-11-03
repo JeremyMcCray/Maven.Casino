@@ -2,12 +2,14 @@ package io.zipcoder.casino.GameClasses.CardGames;
 
 import io.zipcoder.casino.Player.Hand;
 
-import java.util.Collection;
 import java.util.Collections;
 import java.util.Stack;
+import java.util.ArrayList;
 
 public class Deck {
     private Stack<Card> currentDeck = new Stack<Card>();
+
+
 
     public Deck(){
         for (int i = 0;i<13;i++) {
@@ -22,6 +24,16 @@ public class Deck {
         Collections.shuffle(this.currentDeck);
         return this;
     }
+
+    public boolean isEmpty(){
+        if(currentDeck.size() == 0){
+            return true;
+        }
+        else{
+            return false;
+        }
+    }
+
 
     public Card draw(){return currentDeck.pop();}
 

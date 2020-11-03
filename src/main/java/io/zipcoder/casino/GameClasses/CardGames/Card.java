@@ -8,14 +8,20 @@ public class Card {
         this.rank = cardRank;
         this.suit = cardSuit;
     }
+    public Card(EnumRank cardRank){
+        this.rank = cardRank;
+    }
 
     public EnumSuit getSuit() {
         return suit;
     }
 
     public EnumRank getRank() {
-        return rank;
+        return this.rank;
     }
 
-
 }
+
+
+
+

@@ -1,11 +1,13 @@
 package io.zipcoder.casino.GameClasses;
 
+import io.zipcoder.casino.CasinoClasses.Membership;
 import io.zipcoder.casino.Player.Player;
 
 import java.util.ArrayList;
 
 public interface Game {
 
+    public void startGame(Membership membership);
 
 
     public Boolean quitGame();
@@ -14,7 +16,7 @@ public interface Game {
 
     public Boolean playAgain();
 
-    public Player playerBuilder();
+    public Player playerBuilder(Membership membership);
 
     public Boolean isTurn();
 }

@@ -13,7 +13,7 @@ public class CardPlayer extends Player{
         this.hand = hand;
     }
 
-    public CardPlayer(){
+    public CardPlayer (){
         String playerName = "";
         Integer balance = 0;
         Integer age;
@@ -23,6 +23,7 @@ public class CardPlayer extends Player{
     public Hand checkHand( Player playerName,Hand hand){
 
 
-        return null;
+        return this.hand;
+
     }
 }

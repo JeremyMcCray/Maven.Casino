@@ -6,6 +6,7 @@ public class OU7Player extends Player{
     String playerName = "";
     Integer balance = 0;
     Integer age;
+    Integer idNumber;
     Membership playerAccount;
 
     public OU7Player(Membership playerAccount){
@@ -13,5 +14,27 @@ public class OU7Player extends Player{
         this.balance = playerAccount.getBalance();
         this.age = playerAccount.getAge();
         this.playerAccount = playerAccount;
+        this.idNumber = playerAccount.getIdNumber();
+    }
+
+    public String getName(){
+
+        return this.playerName;
+    }
+
+    public Integer getAge(){
+
+        return this.age;
+    }
+
+    public Integer getIdNumber(){
+
+        return this.idNumber;
+    }
+
+
+    public void setBalance(Integer amountToAdd) {
+        this.balance += amountToAdd;
     }
 }
+

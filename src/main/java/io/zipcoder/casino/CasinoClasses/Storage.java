@@ -4,10 +4,10 @@ import java.util.HashMap;
 
 public class Storage {
 
-    private HashMap<Integer,Membership> memberStorage = new HashMap<>();
+    public HashMap<Integer,Membership> memberStorage;
 
-    public Storage(Membership membership){
-        this.memberStorage.put(membership.getIdNumber(), membership);
+    public Storage(){
+        memberStorage = new HashMap<>();
     }
 
     public HashMap<Integer, Membership> getMemberStorage() {
@@ -16,6 +16,19 @@ public class Storage {
 
     public void addMemberToStorage(Membership membership) {
         this.memberStorage.put(membership.getIdNumber(),membership);
+    }
+
+    public Membership getMember(Integer personId){
+
+        Membership actualPerson = null;
+
+        for(Integer accountNumber : memberStorage.keySet()){
+            if(accountNumber.equals(personId));{
+                actualPerson = memberStorage.get(personId);
+                break;
+            }
+        }
+        return actualPerson;
     }
 
 }

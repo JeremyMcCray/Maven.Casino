@@ -1,5 +1,6 @@
 package io.zipcoder.casino.Player;
 
+
 import io.zipcoder.casino.CasinoClasses.Membership;
 import io.zipcoder.casino.GameClasses.GamblingGame;
 
@@ -20,5 +21,6 @@ public class BlackJackPlayer extends CardPlayer implements GamblerAttributes{
         Integer betPlaced = 0;
 
         return betPlaced;
+
     }
 }
